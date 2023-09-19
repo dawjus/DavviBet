@@ -31,7 +31,7 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/{userName}/payment")
+    @PostMapping("/payment/{userName}")
     public ResponseEntity<String> rechargeAccount(@PathVariable("userName") String userName, @RequestParam double amount) {
         User user = userService.findByUsername(userName);
         user.setBalance(user.getBalance()+amount);

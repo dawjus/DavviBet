@@ -1,7 +1,6 @@
 package com.example.becik.betsDetails;
 
 import com.example.becik.bets.Bets;
-import com.example.becik.betsDetails.BetsDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -22,11 +22,8 @@ public class Event implements Serializable {
     private Long id;
     @Enumerated(EnumType.STRING)
     private EventType eventType;
-
     private String description;
     private double course;
-
-//    private String result;
     @Enumerated(EnumType.STRING)
     private ResultType result;
     @ManyToOne

@@ -16,7 +16,7 @@ public class AdminService {
     private final BetsDetailsService betsDetailsService;
 
     @Autowired
-    public AdminService(EventService eventService, MatchService matchService, BetsDetailsService betsDetailsService) {
+    public AdminService(EventService eventService, BetsDetailsService betsDetailsService) {
         this.eventService = eventService;
         this.betsDetailsService = betsDetailsService;
     }

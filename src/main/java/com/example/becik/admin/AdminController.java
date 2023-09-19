@@ -42,7 +42,6 @@ public class AdminController {
             case LOSE -> adminService.loseBetsUpdate(id);
             case UNSETTLED -> {}
         }
-        System.out.println("WHOOOHUUU");
         return new ResponseEntity<>(event, HttpStatus.OK);
     }
 

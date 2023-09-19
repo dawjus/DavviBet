@@ -7,8 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.config.ldap.EmbeddedLdapServerContextSourceFactoryBean;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,11 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import javax.sql.DataSource;
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -32,25 +26,12 @@ public class SecurityConfig{
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .authorizeHttpRequests()
-//                .anyRequest().permitAll()
-//                .and()
-//                .cors()
-//                .and()
-//                .httpBasic();
-//        return http.build();
-//    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .httpBasic().and()
                 .authorizeRequests()
-                .anyRequest().permitAll()
+                .anyRequest().permitAll()  // Restrictions lifted temporarily
                 .and()
                 .formLogin().permitAll()
                 .and()
@@ -71,7 +52,7 @@ public class SecurityConfig{
                 .build();
 
         UserDetails user = User.builder()
-                .username("Dawidek123")
+                .username("user")
                 .password("$2a$10$YJvlrDJ/IuMmKWfew8uMWOK2EGHXxqjIP6mvWpXltZr1KyTFUD5/i")
                 .roles(String.valueOf(UserRole.USER))
                 .build();

@@ -9,7 +9,6 @@ import java.util.List;
 public class UserService {
     private final UserRepo userRepo;
 
-
     @Autowired
     public UserService(UserRepo userrepo) {
         this.userRepo = userrepo;
