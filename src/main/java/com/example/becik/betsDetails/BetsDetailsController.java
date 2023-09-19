@@ -22,7 +22,7 @@ public class BetsDetailsController {
     public void addEventToBet(
             @PathVariable("username") String username,
             @PathVariable("bet_id") Long id,
-            @RequestParam List<Long> eventIds) {
+            @RequestBody List<Long> eventIds) {
         Bets bet = betsService.findBetsByID(id);
         for (Long eventId: eventIds){
             betsDetailsService.addEventToBet(eventId, bet.getId());

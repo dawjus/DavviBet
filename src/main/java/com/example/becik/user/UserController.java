@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;
@@ -23,21 +24,16 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/")
-    public String hello(){
-        return "helo";
-    }
-
 
     @GetMapping("/find/{userName}")
     public ResponseEntity<User> getUserById(@PathVariable("userName") String userName){
-        User user = userService.findUserById(userName);
+        User user = userService.findByUsername(userName);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/{userName}/payment")
     public ResponseEntity<String> rechargeAccount(@PathVariable("userName") String userName, @RequestParam double amount) {
-        User user = userService.findUserById(userName);
+        User user = userService.findByUsername(userName);
         user.setBalance(user.getBalance()+amount);
         userService.updateUser(user);
         return ResponseEntity.ok("Account recharged successfully");

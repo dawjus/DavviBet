@@ -9,31 +9,23 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "users")
+@Data
 public class User implements Serializable {
 
     @Id
     @NonNull
-    private String userName;
+    private String username;
     @NonNull
     private String password;
     private String address;
     private String phone;
     private double balance=0;
-
-
-
-//    public User(Builder builder){
-//        name = builder.name;
-//        surname = builder.surname;
-//        address = builder.address;
-//        phone = builder.phone;
-//        balance = builder.balance;
-//    }
-
+    @Enumerated(EnumType.STRING)
+    private UserRole role = UserRole.USER;
     public User() {}
 
-    public User(String userName, String password, String surname, String address, String phone, Float balance){
-        this.userName = userName;
+    public User(String username, String password, String surname, String address, String phone, Float balance){
+        this.username = username;
         this.password = password;
         this.address = address;
         this.phone = phone;
@@ -43,7 +35,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +

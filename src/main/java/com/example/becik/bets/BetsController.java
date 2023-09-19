@@ -45,11 +45,12 @@ public class BetsController {
             @RequestParam double price) {
 
         Bets bet = new Bets();
-        User user = userService.findUserById(username);
+        User user = userService.findByUsername(username);
         bet.setUser(user);
         bet.setPrice(price);
-        bet.setLose_events(0);
-        bet.setWin_events(0);
+        user.setBalance(user.getBalance()-price);
+        bet.setLoseEvents(0);
+        bet.setWinEvents(0);
         betsService.addBets(bet);
     }
 

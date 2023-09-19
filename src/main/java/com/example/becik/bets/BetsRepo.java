@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BetsRepo extends JpaRepository<Bets, Long> {
-    @Query("SELECT b FROM Bets b WHERE b.user.userName = :username")
+    @Query("SELECT b FROM Bets b WHERE b.user.username = :username")
     List<Bets> findAllBetsUser(@Param("username") String username);
     Bets findBetById(Long id);
 }

@@ -4,7 +4,6 @@ import com.example.becik.bets.Bets;
 import com.example.becik.bets.BetsRepo;
 import com.example.becik.bets.BetsService;
 import com.example.becik.event.Event;
-import com.example.becik.event.EventRepo;
 import com.example.becik.event.EventService;
 import com.example.becik.event.ResultType;
 import org.springframework.beans.factory.annotation.Autowired;

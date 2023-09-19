@@ -16,10 +16,6 @@ public class MatchController {
         this.matchService = matchService;
     }
 
-    @GetMapping("/")
-    public String hello(){
-        return "meczyki";
-    }
 
     @PostMapping("/add")
     public ResponseEntity<Match> addMatch(@RequestBody Match match){
@@ -29,7 +25,7 @@ public class MatchController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Match>> getAllUsers(){
-        List<Match> matches = matchService.findAllMatches();
+        List<Match> matches = matchService.findFutureMatches();
         return new ResponseEntity<>(matches, HttpStatus.OK);
     }
 

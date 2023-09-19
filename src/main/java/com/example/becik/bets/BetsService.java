@@ -23,7 +23,7 @@ public class BetsService {
     }
 
     public List<Bets> findBetsUser(String username){
-        return findBetsUser(username);
+        return betsRepo.findAllBetsUser(username);
     }
 
     public Bets findBetsByID(Long id) {

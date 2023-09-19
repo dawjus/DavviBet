@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/adminy")
+@RequestMapping("/admin")
 public class AdminController {
 
     private final AdminService adminService;
@@ -32,15 +32,17 @@ public class AdminController {
     @PostMapping("/unsettled/{id}")
     public ResponseEntity<Event> changeStatus(
             @PathVariable("id") Long id,
-            @RequestParam ResultType result
+            @RequestBody ResultType result
     ){
         Event event = eventService.findEventById(id);
         event.setResult(result);
+        eventService.updateEvent(event);
         switch (result){
             case WIN ->  adminService.winBetsUpdate(id);
             case LOSE -> adminService.loseBetsUpdate(id);
             case UNSETTLED -> {}
         }
+        System.out.println("WHOOOHUUU");
         return new ResponseEntity<>(event, HttpStatus.OK);
     }
 

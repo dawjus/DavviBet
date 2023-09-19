@@ -16,11 +16,6 @@ public class EventController {
         this.eventService =  eventService;
     }
 
-    @GetMapping("/")
-    public String hello(){
-        return "iwenciki";
-    }
-
     @PostMapping("/add")
     public ResponseEntity<Event> addEvent(@RequestBody Event event){
         Event newEvent = eventService.addEvent(event);
@@ -32,6 +27,5 @@ public class EventController {
         List<Event> events = eventService.findEvent(matchId);
         return new ResponseEntity<>(events, HttpStatus.OK);
     }
-
 
 }

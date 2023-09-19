@@ -1,9 +1,6 @@
 package com.example.becik.bets;
 
-import com.example.becik.event.Event;
-import com.example.becik.event.EventType;
 import com.example.becik.event.ResultType;
-import com.example.becik.match.Match;
 import com.example.becik.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,19 +28,19 @@ public class Bets implements Serializable {
     @Enumerated(EnumType.STRING)
     private ResultType result = ResultType.UNSETTLED;
     private int number_events;
-    private int win_events;
-    private int lose_events;
+    private int winEvents;
+    private int loseEvents;
 
     public void increase_win_events() {
-        this.win_events += 1;
-        if (this.win_events == this.number_events) {
+        this.winEvents += 1;
+        if (this.winEvents == this.number_events) {
             this.result = ResultType.WIN;
             user.setBalance(user.getBalance()+this.course*this.price);
         }
     }
 
     public void increase_lose_events() {
-        this.lose_events += 1;
+        this.loseEvents += 1;
         this.result = ResultType.LOSE;
     }
 

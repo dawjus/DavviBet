@@ -1,12 +1,14 @@
 package com.example.becik.security;
 
-import lombok.Data;
+import lombok.*;
 
 @Data
-public class RegisterRequest {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+public class LoginRequest {
 
     private String username;
     private String password;
-    private String phone;
-    private String address;
 }

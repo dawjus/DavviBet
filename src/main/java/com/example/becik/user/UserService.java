@@ -27,11 +27,11 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public User findUserById(String userName){
-        return userRepo.findUserByUserName(userName);
+    public User findByUsername(String userName){
+        return userRepo.findUserByUsername(userName);
     }
 
     public void deleteUser(String userName){
-        userRepo.deleteUserByUserName(userName);
+        userRepo.deleteUserByUsername(userName);
     }
 }

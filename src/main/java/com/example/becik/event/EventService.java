@@ -29,4 +29,6 @@ public class EventService {
     public List<Event> findEventUnsettled(){
         return eventRepo.findEventUnsettled();
     }
+
+    public Event updateEvent(Event event){return eventRepo.save(event);}
 }

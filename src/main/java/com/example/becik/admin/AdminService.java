@@ -4,6 +4,7 @@ import com.example.becik.bets.Bets;
 import com.example.becik.betsDetails.BetsDetailsService;
 import com.example.becik.event.Event;
 import com.example.becik.event.EventService;
+import com.example.becik.match.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class AdminService {
     private final BetsDetailsService betsDetailsService;
 
     @Autowired
-    public AdminService(EventService eventService, BetsDetailsService betsDetailsService) {
+    public AdminService(EventService eventService, MatchService matchService, BetsDetailsService betsDetailsService) {
         this.eventService = eventService;
         this.betsDetailsService = betsDetailsService;
     }
